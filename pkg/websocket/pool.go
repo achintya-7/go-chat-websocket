@@ -43,7 +43,7 @@ func (pool *Pool) Start() {
 				break
 			
 			case message := <-pool.Broadcast:
-				fmt.Println("Sending message to all clients")
+				fmt.Println("\nSending message to all clients")
 				for client := range pool.Clients{
 					if err := client.Conn.WriteJSON(message); err != nil {
 						fmt.Println(err)

@@ -29,7 +29,7 @@ func setUpRoutes() {
 	pool := websocket.NewPool()
 	go pool.Start()
 
-	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/chat", func(w http.ResponseWriter, r *http.Request) {
 		serveWs(pool, w, r)
 	})
 
@@ -38,7 +38,7 @@ func setUpRoutes() {
 }
 
 func main() {
-	fmt.Println("Chat Socket Started at - ws://localhost:2205/ws")
+	fmt.Println("Chat Socket Started at - ws://localhost:2205/chat")
 	setUpRoutes()
 	http.ListenAndServe(":2205", nil)
 }
